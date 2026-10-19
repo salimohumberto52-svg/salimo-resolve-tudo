@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123c70">
+<title>Salemo Resolve Tudo</title>
+<style>
+:root{--blue:#123c70;--blue2:#1769aa;--light:#f3f7fc;--ink:#172438;--muted:#637187;--line:#dce5f0;--green:#0b8b65}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--light);color:var(--ink)}
+header{background:linear-gradient(120deg,#10315b,#1769aa);color:white;padding:18px 16px 38px}
+nav{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:20px;font-weight:850;letter-spacing:-.4px}.logo span{color:#8fe3c5}
+nav a{color:white;text-decoration:none;font-size:14px;opacity:.95}
+.hero{max-width:900px;margin:42px auto 0;text-align:center}.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.08;margin:0 0 14px;letter-spacing:-1.2px}.hero p{font-size:17px;line-height:1.6;max-width:680px;margin:0 auto 22px;color:#e7f1ff}
+.pill{display:inline-block;border:1px solid #ffffff55;border-radius:999px;padding:7px 12px;font-size:12px;margin-bottom:15px}
+main{max-width:1050px;margin:-18px auto 0;padding:0 16px 48px;position:relative}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 10px 30px #163c6810}
+.panel h2{margin:0 0 6px;font-size:22px}.sub{color:var(--muted);margin:0 0 18px;line-height:1.5}
+label{display:block;font-size:14px;font-weight:700;margin:14px 0 7px}
+select,input,textarea{width:100%;border:1px solid #cbd7e6;border-radius:11px;padding:13px 14px;font:inherit;background:white;color:var(--ink);outline:none}
+select:focus,input:focus,textarea:focus{border-color:var(--blue2);box-shadow:0 0 0 3px #1769aa1c}
+textarea{min-height:125px;resize:vertical}
+button{border:0;border-radius:11px;padding:13px 17px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--blue2);color:white}.primary:hover{background:var(--blue)}
+.secondary{background:#eaf2fb;color:var(--blue)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:20px 0 28px}
+.topic{background:white;border:1px solid var(--line);border-radius:15px;padding:17px;text-align:left;cursor:pointer;transition:.15s}
+.topic:hover{transform:translateY(-2px);border-color:#8bb6e3;box-shadow:0 8px 20px #123c7010}
+.topic .emoji{font-size:25px}.topic strong{display:block;margin:8px 0 4px}.topic small{color:var(--muted);line-height:1.4}
+.result{display:none;margin-top:18px;border:1px solid #b8e4d4;background:#f2fcf8;border-radius:14px;padding:18px;line-height:1.65;white-space:pre-wrap}
+.result h3{margin:0 0 8px;color:#075b45}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.quick button{font-size:13px;padding:9px 11px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+aside{background:#eaf2fb;border-radius:16px;padding:20px}.aside-title{font-weight:800;font-size:18px;margin-bottom:8px}aside p,aside li{font-size:14px;line-height:1.6;color:#42536b}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:22px 16px 30px}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.hero{margin-top:32px}.panel{padding:17px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.logo{font-size:18px}.hero p{font-size:15px}}
+</style>
+</head>
+<body>
+<header>
+  <nav><div class="logo">Salemo <span>Resolve Tudo</span></div><a href="#ajuda">Pedir ajuda ↓</a></nav>
+  <section class="hero">
+    <div class="pill">UM ASSISTENTE PARA O DIA A DIA</div>
+    <h1>Tem um problema?<br>Vamos encontrar uma solução.</h1>
+    <p>Explique o que está a acontecer. Organize as ideias, descubra os próximos passos e encontre recursos úteis — tudo num só lugar.</p>
+    <a href="#ajuda"><button class="primary">Começar agora</button></a>
+  </section>
+</header>
+<main>
+  <section class="grid" aria-label="Categorias de ajuda">
+    <button class="topic" data-topic="Estudos"><span class="emoji">📚</span><strong>Estudos e aprendizagem</strong><small>Português, matemática, exercícios e explicações.</small></button>
+    <button class="topic" data-topic="Tecnologia"><span class="emoji">💻</span><strong>Telemóveis e computadores</strong><small>Erros, configurações, programas e equipamentos.</small></button>
+    <button class="topic" data-topic="Negócios"><span class="emoji">💼</span><strong>Negócios e vendas</strong><small>Ideias, divulgação, clientes e organização.</small></button>
+    <button class="topic" data-topic="Dinheiro"><span class="emoji">💰</span><strong>Organização financeira</strong><small>Orçamento, poupança e planeamento.</small></button>
+    <button class="topic" data-topic="Escrita"><span class="emoji">✍️</span><strong>Escrita e documentos</strong><small>Mensagens, cartas, descrições e currículos.</small></button>
+    <button class="topic" data-topic="Vida diária"><span class="emoji">🧭</span><strong>Problemas do dia a dia</strong><small>Planear tarefas, tomar decisões e resolver conflitos.</small></button>
+  </section>
+  <section class="panel" id="ajuda">
+    <h2>Conte-me o seu problema</h2>
+    <p class="sub">Este protótipo funciona no seu navegador e organiza um plano inicial. Para respostas inteligentes personalizadas, será necessário ligar o site a um serviço de IA.</p>
+    <form id="helpForm">
+      <label for="category">Em que área precisa de ajuda?</label>
+      <select id="category">
+        <option>Escolha uma categoria</option><option>Estudos</option><option>Tecnologia</option><option>Negócios</option><option>Dinheiro</option><option>Escrita</option><option>Vida diária</option><option>Outro problema</option>
+      </select>
+      <label for="problem">Descreva o que aconteceu</label>
+      <textarea id="problem" placeholder="Ex.: O meu computador não liga quando carrego no botão..." required></textarea>
+      <label for="goal">O que gostaria de conseguir? (opcional)</label>
+      <input id="goal" placeholder="Ex.: Fazer o computador voltar a funcionar">
+      <div class="actions"><button class="primary" type="submit">Criar plano de solução</button><button class="secondary" type="button" id="clearBtn">Limpar</button></div>
+    </form>
+    <div class="result" id="result" aria-live="polite"></div>
+    <div class="actions" id="resultActions" style="display:none"><button class="secondary" id="copyBtn" type="button">Copiar plano</button><button class="secondary" id="shareBtn" type="button">Partilhar</button></div>
+  </section>
+  <section class="two">
+    <aside><div class="aside-title">Como funciona?</div><ol><li>Escolha a área do problema.</li><li>Explique a situação com detalhes, sem incluir senhas ou dados bancários.</li><li>Receba um plano inicial e avance passo a passo.</li></ol></aside>
+    <aside><div class="aside-title">Importante</div><p>O site oferece orientação geral. Em emergências, questões médicas, legais ou financeiras complexas, procure serviços de emergência ou um profissional qualificado. Nunca partilhe palavras-passe, PINs ou códigos de confirmação.</p></aside>
+  </section>
+</main>
+<footer>© <span id="year"></span> Salemo Resolve Tudo · Feito para ajudar, aprender e avançar.</footer>
+<script>
+const category=document.getElementById('category');
+const problem=document.getElementById('problem');
+const goal=document.getElementById('goal');
+const result=document.getElementById('result');
+const resultActions=document.getElementById('resultActions');
+document.getElementById('year').textContent=new Date().getFullYear();
+document.querySelectorAll('.topic').forEach(btn=>btn.addEventListener('click',()=>{
+  const t=btn.dataset.topic; category.value=t; document.getElementById('ajuda').scrollIntoView({behavior:'smooth'});
+  problem.focus();
+}));
+document.getElementById('helpForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const c=category.value, p=problem.value.trim(), g=goal.value.trim();
+  if(!p){problem.focus();return}
+  let specific='';
+  if(c==='Tecnologia') specific='• Verifique a alimentação, cabos, bateria e mensagens de erro.\n• Anote o modelo do equipamento e o que acontece antes da falha.\n• Faça uma alteração de cada vez e teste. Não abra equipamentos ligados à corrente.';
+  else if(c==='Estudos') specific='• Divida a dúvida em perguntas pequenas.\n• Reúna o enunciado e o que já tentou.\n• Resolva um exemplo passo a passo e depois pratique outro.';
+  else if(c==='Negócios') specific='• Defina o cliente que quer alcançar.\n• Escreva a oferta, o preço e o benefício de forma clara.\n• Teste uma divulgação simples e registe os resultados.';
+  else if(c==='Dinheiro') specific='• Registe receitas e despesas essenciais.\n• Separe necessidades, dívidas e gastos que podem esperar.\n• Compare opções antes de assumir uma dívida; evite partilhar dados bancários.';
+  else if(c==='Escrita') specific='• Defina quem vai ler e o objetivo da mensagem.\n• Escreva os factos principais em ordem.\n• Reveja nomes, datas, tom e ortografia antes de enviar.';
+  else if(c==='Vida diária') specific='• Descreva o problema em factos concretos.\n• Liste as opções e as consequências de cada uma.\n• Escolha uma ação pequena e segura para começar.';
+  else specific='• Identifique exatamente o que está a correr mal.\n• Reúna informações e exemplos relevantes.\n• Compare soluções possíveis e escolha o próximo passo mais seguro.';
+  const text=`PLANO INICIAL — SALEMO RESOLVE TUDO\n\nÁrea: ${c}\nProblema: ${p}${g?'\nObjetivo: '+g:''}\n\nPRÓXIMOS PASSOS\n${specific}\n\nPARA AVANÇAR\n1. Comece pelo passo mais simples e seguro.\n2. Registe o que aconteceu depois de tentar.\n3. Se não funcionar, procure ajuda especializada e partilhe apenas informações não sensíveis.\n\nNota: este plano é uma orientação geral gerada no navegador, não uma resposta de especialista.`;
+  result.textContent=text; result.style.display='block'; resultActions.style.display='flex'; result.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+document.getElementById('clearBtn').addEventListener('click',()=>{problem.value='';goal.value='';category.selectedIndex=0;result.style.display='none';resultActions.style.display='none';problem.focus()});
+document.getElementById('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(result.textContent);document.getElementById('copyBtn').textContent='Copiado!';setTimeout(()=>document.getElementById('copyBtn').textContent='Copiar plano',1600)}catch(e){alert('Não foi possível copiar automaticamente. Selecione o texto do plano e copie manualmente.')}});
+document.getElementById('shareBtn').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:'Salemo Resolve Tudo',text:result.textContent})}catch(e){}}else{try{await navigator.clipboard.writeText(result.textContent);alert('Plano copiado. Pode colá-lo numa mensagem.')}catch(e){alert('Use o botão Copiar plano para partilhar o resultado.')}}});
+</script>
+</body>
+</html>
